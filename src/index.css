@@ -1,3 +1,32 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap');
+
+@theme {
+  --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
+
+  /* NUEVA PALETA ACORDE AL CONTEXTO RURAL/INDUSTRIAL */
+  --color-brand-stone: #f2f2f0;   /* Fondo principal: Gris cemento/piedra muy claro */
+  --color-brand-iron: #1a1a1a;    /* Para secciones oscuras que combinen con el Hero */
+  --color-brand-red: #7e161a;     /* Rojo institucional */
+  --color-brand-orange: #9b2614;  /* Naranja óxido para detalles */
+  --color-brand-dark: #262626;    /* Gris muy oscuro para textos */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-brand-stone);
+}
+
+@keyframes slow-zoom {
+  from { transform: scale(1); }
+  to { transform: scale(1.15); }
+}
+
+.animate-slow-zoom {
+  animation: slow-zoom 20s ease-in-out infinite alternate;
+}
+
