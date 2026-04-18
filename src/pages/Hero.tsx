@@ -14,7 +14,7 @@ export const Hero = () => {
     <section className="relative w-full h-screen overflow-hidden">
       
       {/* IMAGEN DE FONDO CON EFECTO ZOOM LENTO (Ken Burns) */}
-      <div className="absolute inset-0 scale-110 animate-slow-zoom">
+      <div className="absolute inset-0 -translate-y-20 md:translate-y-0 z-0">
         <img 
           src="/mangainicio.webp" 
           className="w-full h-full object-cover object-center" 
