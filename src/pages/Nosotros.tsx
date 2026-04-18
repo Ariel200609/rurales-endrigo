@@ -12,7 +12,7 @@ export const Nosotros = () => {
               Nuestra Historia
             </span>
             <h2 className="text-3xl md:text-4xl font-black text-brand-dark leading-tight mb-6 uppercase">
-              Tres generaciones <br/> forjando el campo.
+              78 años <br/> de experiencia
             </h2>
             
             <p className="text-stone-600 leading-relaxed text-sm md:text-base  mb-8">

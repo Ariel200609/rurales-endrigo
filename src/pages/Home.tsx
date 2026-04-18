@@ -7,6 +7,7 @@ import { Servicios } from './Servicios';
 import { Contacto } from './Contacto';
 import { WspButton } from './WspButton';
 import { ScrollReveal } from './ScrollReveal'; // Importamos el revelador
+import { Obras } from './Obras';
 
 export const Home = () => {
   return (
@@ -23,6 +24,10 @@ export const Home = () => {
 
       <ScrollReveal>
         <Servicios />
+      </ScrollReveal>
+
+      <ScrollReveal>
+        <Obras />
       </ScrollReveal>
 
       <ScrollReveal>

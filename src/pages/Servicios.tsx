@@ -84,13 +84,16 @@ export const Servicios = () => {
               <h3 className="text-2xl font-black mb-6 uppercase tracking-tighter italic border-b border-white/10 pb-4">
                 {cat.titulo}
               </h3>
+              
               <ul className="space-y-4 flex-grow">
                 {cat.items.map((item, index) => (
-                  <li key={index} className="flex items-start gap-3 text-stone-400 group-hover:text-stone-300 transition-colors">
-                    <span className="text-brand-orange mt-1">
+                  // Usamos 'group/item' para animar cada línea individualmente al pasarle el mouse
+                  <li key={index} className="flex items-center gap-3 text-stone-400 hover:text-white transition-colors duration-300 group/item cursor-default">
+                    <span className="text-brand-orange mt-0.5 transform transition-transform duration-300 group-hover/item:scale-125 group-hover/item:translate-x-1">
                       <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
                     </span>
-                    <span className="font-light text-sm leading-snug">{item}</span>
+                    {/* Le dimos más fuerza a la fuente (font-medium) y el efecto de deslizarse a la derecha */}
+                    <span className="font-medium text-[15px] leading-relaxed transition-transform duration-300 group-hover/item:translate-x-1">{item}</span>
                   </li>
                 ))}
               </ul>
