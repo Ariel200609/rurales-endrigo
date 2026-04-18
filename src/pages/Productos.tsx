@@ -1,7 +1,7 @@
 // src/pages/Productos.tsx
 import { useState } from 'react';
 
-// Reemplazá el array 'items' por este con 10 productos
+// El array 'items' con tus productos
 const items = [
   { 
     id: 1, 
@@ -22,7 +22,7 @@ const items = [
     nombre: 'Cargador de Ganado', 
     img: '/cargador.webp',
     descripcion: 'Cargador de ganado madera tratada.',
-    galeria: ['/cargador.webp',]
+    galeria: ['/cargador.webp']
   },
   { 
     id: 4, 
@@ -73,7 +73,15 @@ export const Productos = () => {
               onClick={() => setSelectedProduct(p)} // Al clickear, seleccionamos el producto
             >
               <div className="aspect-[4/5] overflow-hidden bg-brand-stone mb-6 relative">
-                <img src={p.img} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt={p.nombre} />
+                
+                {/* MAGIA DE VELOCIDAD: loading="lazy" agregado aquí */}
+                <img 
+                  src={p.img} 
+                  loading="lazy" 
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
+                  alt={p.nombre} 
+                />
+                
                 {/* Overlay sutil que aparece al hacer hover */}
                 <div className="absolute inset-0 bg-brand-dark/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                    <span className="bg-white text-brand-dark px-4 py-2 text-xs font-bold uppercase tracking-widest">Ver Galería</span>
@@ -95,9 +103,9 @@ export const Productos = () => {
           <div className="absolute inset-0 bg-brand-dark/90 backdrop-blur-md" onClick={() => setSelectedProduct(null)} />
           
           <div className="relative bg-white w-full max-w-5xl max-h-[90vh] overflow-y-auto rounded-sm flex flex-col md:flex-row shadow-2xl">
-            {/* Botón Cerrar */}
+            {/* Botón Cerrar mejorado con fondo blanco sutil */}
             <button 
-              className="absolute top-4 right-4 z-10 text-brand-dark hover:scale-110 transition-transform"
+              className="absolute top-4 right-4 z-10 text-brand-dark bg-white/70 backdrop-blur-sm rounded-full p-1 hover:scale-110 hover:bg-white transition-all"
               onClick={() => setSelectedProduct(null)}
             >
               <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
@@ -106,7 +114,15 @@ export const Productos = () => {
             {/* Galería de fotos (Izquierda) */}
             <div className="md:w-2/3 bg-brand-stone grid grid-cols-1 gap-1">
               {selectedProduct.galeria.map((img: string, idx: number) => (
-                <img key={idx} src={img} className="w-full h-auto object-cover" alt={`Detalle ${idx}`} />
+                
+                /* MAGIA DE VELOCIDAD: loading="lazy" agregado a las fotos de la galería */
+                <img 
+                  key={idx} 
+                  src={img} 
+                  loading="lazy" 
+                  className="w-full h-auto object-cover" 
+                  alt={`Detalle de ${selectedProduct.nombre} - foto ${idx + 1}`} 
+                />
               ))}
             </div>
 
