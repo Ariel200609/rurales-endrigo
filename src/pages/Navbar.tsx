@@ -5,7 +5,6 @@ export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  // Detectar el scroll para cambiar el fondo del Navbar
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
@@ -17,30 +16,29 @@ export const Navbar = () => {
   const navLinks = [
     { name: 'Inicio', href: '#' },
     { name: 'Productos', href: '#productos' },
+    { name: 'Servicios', href: '#servicios' },
     { name: 'Nosotros', href: '#nosotros' },
     { name: 'Contacto', href: '#contacto' },
-    { name: 'Servicios', href: '#servicios' },
   ];
 
   return (
     <nav 
       className={`fixed top-0 w-full z-50 transition-all duration-500 font-sans ${
         isScrolled 
-          ? 'bg-[#121212]/90 backdrop-blur-md py-4 shadow-xl' 
-          : 'bg-transparent py-6'
+          ? 'bg-[#121212]/90 backdrop-blur-md py-3 shadow-xl' // Más fino al scrollear
+          : 'bg-transparent py-4' // Más fino al inicio
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         
-        {/* LOGO / NOMBRE */}
-        <div className="flex flex-col">
-          <span className="text-white font-black text-xl md:text-2xl tracking-tighter leading-none italic">
-            RURALES <span className="text-brand-orange">ENDRIGO</span>
-          </span>
-          <span className="text-[8px] md:text-[10px] text-stone-400 uppercase tracking-[0.4em] font-bold">
-            Carpintería de Oficio
-          </span>
-        </div>
+        {/* LOGO NUEVO - Tamaño ajustado */}
+        <a href="LOGO" className="flex items-center">
+          <img 
+            src="/logoEndrigo.png" 
+            alt="Rurales Endrigo Logo" 
+            className="h-8 md:h-10 w-auto object-contain brightness-0 invert transition-transform hover:scale-105"
+          />
+        </a>
 
         {/* LINKS DESKTOP */}
         <div className="hidden md:flex items-center gap-8">
@@ -61,7 +59,7 @@ export const Navbar = () => {
           </a>
         </div>
 
-        {/* BOTÓN MENÚ MOBILE (HAMBURGUESA) */}
+        {/* BOTÓN MENÚ MOBILE */}
         <button 
           className="md:hidden text-white p-2"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}

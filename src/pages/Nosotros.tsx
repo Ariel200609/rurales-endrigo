@@ -19,7 +19,7 @@ export const Nosotros = () => {
               Fundada en <strong className="font-bold text-brand-dark">1948</strong>  el Sr. Santos Endrigo padre del actual dueño decidió poner una carpintería y herrería rural, en la cual había trabajado desde los 16 años comprándole las instalaciones a su padre Don
 Antonio Endrigo.
 Don Santos, casado con Isabel Calles y padre de tres hijos: Patricia
-Isabel, Silvia Elena y Raúl Santos; el cual al faltar su padre, tomó el control de la empresa para hacerse cargo de ella hoy RURALES ENDRIGO, contando hoy con una sucursal en Daireaux, transporte propio y la ocupación de 9 empleados a faijos.
+Isabel, Silvia Elena y Raúl Santos; el cual al faltar su padre, tomó el control de la empresa para hacerse cargo de ella hoy RURALES ENDRIGO, contando hoy con una sucursal en Daireaux, transporte propio y la ocupación de 9 empleados a fijos.
             </p>
 
             <a href="#contacto" className="text-sm font-bold text-brand-dark border-b-2 border-brand-orange pb-1 hover:text-brand-orange transition-colors">

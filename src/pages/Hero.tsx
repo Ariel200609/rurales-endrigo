@@ -62,7 +62,7 @@ export const Hero = () => {
           <div className={`transition-all duration-700 delay-1000 ${animate ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
             <p className="text-sm md:text-xl text-stone-300 leading-relaxed font-light">
               Carpintería de diseño industrial para el sector agropecuario. <br className="hidden md:block"/>
-              <span className="font-semibold text-white">Tres generaciones</span> forjando calidad en Daireaux.
+              <span className="font-semibold text-white">Tres generaciones</span> forjando calidad en Bonifacio.
             </p>
           </div>
 
