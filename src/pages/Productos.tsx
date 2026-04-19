@@ -1,6 +1,6 @@
 // src/pages/Productos.tsx
 import { useState, useEffect } from 'react';
-import { ImageSkeleton } from '../components/Skeleton'; // <-- ACÁ IMPORTAMOS TU COMPONENTE
+import { ImageSkeleton } from '../pages/Skeleton'; // <-- ACÁ IMPORTAMOS TU COMPONENTE
 
 // ==========================================
 // COMPONENTE ENVOLTORIO PARA LA CARGA
