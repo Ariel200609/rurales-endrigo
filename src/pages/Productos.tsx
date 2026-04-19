@@ -1,26 +1,22 @@
 // src/pages/Productos.tsx
 import { useState, useEffect } from 'react';
 
-
-const ImageSkeleton = () => (
+// LE CAMBIAMOS EL NOMBRE A "EsqueletoInterno" PARA ENGAÑAR A VS CODE
+const EsqueletoInterno = () => (
   <div className="absolute inset-0 bg-stone-200 animate-pulse flex items-center justify-center">
     <svg className="w-12 h-12 text-stone-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
     </svg>
   </div>
 );
-// ==========================================
-// COMPONENTE ENVOLTORIO PARA LA CARGA
-// ==========================================
+
+// ENVOLTORIO DE CARGA
 const ImageLoader = ({ src, alt, className }: { src: string, alt: string, className?: string }) => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   return (
     <>
-      {/* Usamos tu Skeleton importado */}
-      {!isLoaded && <ImageSkeleton />}
-      
-      {/* IMAGEN REAL */}
+      {!isLoaded && <EsqueletoInterno />}
       <img
         src={src}
         alt={alt}
@@ -107,7 +103,6 @@ export const Productos = () => {
         <h2 className="text-brand-orange font-bold uppercase text-xs tracking-[0.3em] mb-2">Catálogo</h2>
         <h3 className="text-4xl font-black text-brand-dark mb-12 italic">Fabricación Propia</h3>
         
-        {/* CARRUSEL HORIZONTAL */}
         <div className="flex overflow-x-auto gap-8 pb-10 snap-x no-scrollbar cursor-grab active:cursor-grabbing">
           {items.map((p) => (
             <div 
@@ -116,8 +111,6 @@ export const Productos = () => {
               onClick={() => setSelectedProduct(p)} 
             >
               <div className="aspect-[4/5] overflow-hidden bg-brand-stone mb-6 relative">
-                
-                {/* USAMOS EL COMPONENTE QUE LLAMA A TU SKELETON */}
                 <ImageLoader 
                   src={p.img}
                   alt={p.nombre}
@@ -135,9 +128,6 @@ export const Productos = () => {
         </div>
       </div>
 
-      {/* =========================================
-          MODAL DE DETALLE 
-          ========================================= */}
       {selectedProduct && (
         <div 
           className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-10 cursor-pointer"
@@ -156,11 +146,9 @@ export const Productos = () => {
               <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
             </button>
 
-            {/* Galería de fotos */}
             <div className="md:w-2/3 bg-brand-stone grid grid-cols-1 gap-1">
               {selectedProduct.galeria.map((img: string, idx: number) => (
                 <div key={idx} className="relative w-full min-h-[300px]">
-                  {/* SKELETON EN LA GALERÍA INTERNA */}
                   <ImageLoader 
                     src={img}
                     alt={`Detalle de ${selectedProduct.nombre} - foto ${idx + 1}`}
@@ -170,7 +158,6 @@ export const Productos = () => {
               ))}
             </div>
 
-            {/* Información */}
             <div className="md:w-1/3 p-8 md:p-12 flex flex-col justify-center bg-white sticky top-0">
               <span className="text-brand-orange font-bold text-xs uppercase tracking-widest mb-4">Detalle de Producto</span>
               <h2 className="text-3xl font-black text-brand-dark mb-6 italic uppercase leading-none">{selectedProduct.nombre}</h2>
