@@ -1,0 +1,6 @@
+# public/robots.txt
+User-agent: *
+Allow: /
+
+# Le indicamos dónde está el mapa del sitio
+Sitemap: https://ruralesendrigo.com.ar/sitemap.xml
