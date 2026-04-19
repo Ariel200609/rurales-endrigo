@@ -13,10 +13,12 @@ export const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // AGREGAMOS "OBRAS" A LA LISTA DE LINKS
   const navLinks = [
     { name: 'Inicio', href: '#' },
     { name: 'Productos', href: '#productos' },
     { name: 'Servicios', href: '#servicios' },
+    { name: 'Obras', href: '#obras' },
     { name: 'Nosotros', href: '#nosotros' },
     { name: 'Contacto', href: '#contacto' },
   ];
@@ -31,14 +33,17 @@ export const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         
-        {/* LOGO NUEVO - Tamaño ajustado */}
-        <a href="LOGO" className="flex items-center">
+        {/* LOGO NUEVO - Recarga la página sin tirar 404 en móviles */}
+        <button 
+          onClick={() => window.location.href = '/'} 
+          className="flex items-center"
+        >
           <img 
             src="/logoEndrigo.png" 
             alt="Rurales Endrigo Logo" 
             className="h-8 md:h-10 w-auto object-contain brightness-0 invert transition-transform hover:scale-105"
           />
-        </a>
+        </button>
 
         {/* LINKS DESKTOP */}
         <div className="hidden md:flex items-center gap-8">
