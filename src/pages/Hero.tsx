@@ -1,8 +1,15 @@
 // src/pages/Hero.tsx
 import { useState, useEffect } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 export const Hero = () => {
   const [animate, setAnimate] = useState(false);
+  
+  // 1. Enganchamos el scroll de la página
+  const { scrollY } = useScroll();
+  
+  // 2. Efecto Parallax: La imagen bajará a un tercio de la velocidad a la que scrollea el usuario.
+  const yFondo = useTransform(scrollY, [0, 1000], [0, 300]);
 
   useEffect(() => {
     const timer = setTimeout(() => setAnimate(true), 100);
@@ -10,32 +17,33 @@ export const Hero = () => {
   }, []);
 
   return (
-    // Quitamos el 'flex items-center' porque ahora usaremos posicionamiento absoluto
-    <section className="relative w-full h-screen overflow-hidden">
+    <section className="relative w-full h-screen overflow-hidden bg-[#0a0a0a]">
       
-      {/* IMAGEN DE FONDO CON EFECTO ZOOM LENTO (Ken Burns) */}
-      <div className="absolute inset-0 -translate-y-20 md:translate-y-0 z-0">
+      {/* IMAGEN DE FONDO CON PARALLAX Y AJUSTE PARA CELULAR */}
+      <motion.div 
+        style={{ y: yFondo }}
+        className="absolute -top-[10%] left-0 w-full h-[120%] z-0 -translate-y-20 md:translate-y-0" 
+      >
         <img 
           src="/mangainicio.webp" 
           className="w-full h-full object-cover object-center" 
           alt="Fondo Rurales Endrigo" 
         />
-      </div>
+      </motion.div>
       
-      {/* OVERLAY DE GRADIENTE INTELIGENTE 
-          En celular oscurece desde abajo (to-t), en PC desde la izquierda (to-r) */}
-      <div className="absolute inset-0 bg-gradient-to-t from-stone-950/90 via-stone-950/30 to-transparent md:bg-gradient-to-r md:from-stone-950/80 md:via-stone-950/40 md:to-transparent" /> 
+      {/* OVERLAY DE GRADIENTE INTELIGENTE (Fijo al Hero) */}
+      <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/90 via-[#0a0a0a]/30 to-transparent md:bg-gradient-to-r md:from-[#0a0a0a]/90 md:via-[#0a0a0a]/40 md:to-transparent z-0" /> 
 
-      {/* TARJETA DE CRISTAL OSCURO (Bottom Sheet en Mobile, Panel en PC) */}
+      {/* TARJETA DE CRISTAL OSCURO */}
       <div className={`absolute z-10 bg-[#121212]/10 backdrop-blur-xl border-t border-white/10 md:border-t-0 flex flex-col justify-center transition-all duration-1000 ease-[cubic-bezier(0.23,1,0.32,1)]
         
-        /* --- ESTILO CELULAR (Anclado abajo, ancho total, esquinas redondas arriba) --- */
+        /* --- ESTILO CELULAR --- */
         bottom-0 left-0 w-full rounded-t-[2.5rem] p-8 pb-12
         
-        /* --- ESTILO COMPUTADORA (Panel a la izquierda) --- */
+        /* --- ESTILO COMPUTADORA --- */
         md:top-0 md:bottom-auto md:h-full md:w-[480px] md:rounded-none md:rounded-r-[4rem] md:p-20 md:border-r
         
-        /* ANIMACIÓN MÁGICA: En celular sube desde abajo, en PC entra desde la izquierda */
+        /* ANIMACIÓN MÁGICA */
         ${animate ? 'translate-y-0 md:translate-x-0 opacity-100' : 'translate-y-24 md:translate-y-0 md:-translate-x-full opacity-0'}`}
       >
         
@@ -77,7 +85,7 @@ export const Hero = () => {
       </div>
 
       {/* INDICADOR DE SCROLL DESKTOP */}
-      <div className="absolute bottom-10 right-10 hidden md:flex flex-col items-center gap-4 text-white/30 animate-bounce">
+      <div className="absolute bottom-10 right-10 hidden md:flex flex-col items-center gap-4 text-white/30 animate-bounce z-10">
         <span className="text-[10px] uppercase tracking-[0.3em] rotate-90 mb-8 font-bold">Scroll</span>
         <div className="w-[1px] h-12 bg-gradient-to-b from-white/40 to-transparent" />
       </div>
