@@ -14,7 +14,7 @@ export const Hero = () => {
   }, []);
 
   return (
-    <section className="relative w-full h-screen overflow-hidden bg-[#0a0a0a]">
+    <section id="inicio" className="relative w-full h-screen overflow-hidden bg-[#0a0a0a]">
       
       {/* IMAGEN DE FONDO CON PARALLAX Y AJUSTE PARA CELULAR */}
       <motion.div 

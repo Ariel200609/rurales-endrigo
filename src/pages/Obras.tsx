@@ -1,4 +1,5 @@
 // src/pages/Obras.tsx
+import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 
 const obras = [
@@ -13,26 +14,79 @@ const obras = [
     id: 2,
     titulo: "Tranqueras Dobles",
     ubicacion: "Casey",
-    img: "tranqueramadera.webp",
+    img: "/tranqueramadera.webp", // Le agregué la barra '/' para que busque bien la ruta
     detalle: "Madera dura seleccionada con acabado industrial."
   },
   {
     id: 3,
-    titulo: "Cargador ",
+    titulo: "Cargador",
     ubicacion: "Casbas",
-    img: "cargador.webp",
+    img: "/cargador.webp",
     detalle: "Diseño ergonómico para carga fluida de hacienda."
   },
   {
     id: 4,
     titulo: "Pedido de Postes",
     ubicacion: "Guaminí",
-    img: "poste2.webp",
-    detalle: ""
+    img: "/poste2.webp",
+    detalle: "Postes tratados de alta durabilidad para perimetrales." // Le sumé un textito para que no quede vacío
   }
 ];
 
 export const Obras = () => {
+  // ESTADO PARA SABER QUÉ TARJETA ESTÁ ACTIVA (Arranca en 0)
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  // REFERENCIAS PARA EL DRAG-TO-SCROLL MÁS CÁLCULO DE POSICIÓN
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const isDragging = useRef(false);
+  const startX = useRef(0);
+  const scrollLeft = useRef(0);
+
+  // LOGICA DE DRAG (Igual que en Productos)
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (!carouselRef.current) return;
+    isDragging.current = true;
+    startX.current = e.pageX - carouselRef.current.offsetLeft;
+    scrollLeft.current = carouselRef.current.scrollLeft;
+  };
+
+  const handleMouseLeave = () => {
+    isDragging.current = false;
+  };
+
+  const handleMouseUp = () => {
+    isDragging.current = false;
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging.current || !carouselRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - carouselRef.current.offsetLeft;
+    const walk = (x - startX.current) * 2; 
+    carouselRef.current.scrollLeft = scrollLeft.current - walk;
+  };
+
+  // LÓGICA MATEMÁTICA PARA DETECTAR QUÉ TARJETA ESTÁ EN EL MEDIO
+  const handleScroll = () => {
+    if (!carouselRef.current) return;
+    
+    // Obtenemos en qué pixel exacto está el scroll
+    const scrollPosition = carouselRef.current.scrollLeft;
+    // Calculamos el ancho de una tarjeta + el espacio (gap) de separación
+    const cardWidth = carouselRef.current.children[0].clientWidth + 24; // 24px es aprox el gap-6
+    
+    // Dividimos la posición por el ancho para saber el índice (y redondeamos)
+    const newIndex = Math.round(scrollPosition / cardWidth);
+    
+    // Aseguramos que el índice no se pase de la cantidad de obras que tenemos
+    const safeIndex = Math.min(Math.max(newIndex, 0), obras.length - 1);
+    
+    if (safeIndex !== activeIndex) {
+      setActiveIndex(safeIndex);
+    }
+  };
+
   return (
     <section id="obras" className="py-24 bg-white font-sans overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
@@ -47,12 +101,21 @@ export const Obras = () => {
           </h2>
         </div>
 
-        {/* CARRUSEL HORIZONTAL CON SNAP */}
-        <div className="flex overflow-x-auto gap-6 pb-12 snap-x snap-mandatory no-scrollbar cursor-grab active:cursor-grabbing">
+        {/* CARRUSEL HORIZONTAL CON EVENTOS DE DRAG Y SCROLL */}
+        <div 
+          ref={carouselRef}
+          onMouseDown={handleMouseDown}
+          onMouseLeave={handleMouseLeave}
+          onMouseUp={handleMouseUp}
+          onMouseMove={handleMouseMove}
+          onScroll={handleScroll} // <-- Escuchamos el scroll para actualizar los puntitos
+          // Quitamos snap-x para que el arrastre con mouse no rebote
+          className="flex overflow-x-auto gap-6 pb-12 no-scrollbar cursor-grab active:cursor-grabbing select-none"
+        >
           {obras.map((obra) => (
             <motion.div
               key={obra.id}
-              className="min-w-[85vw] md:min-w-[600px] snap-center relative"
+              className="min-w-[85vw] md:min-w-[600px] relative"
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5 }}
@@ -61,8 +124,8 @@ export const Obras = () => {
               {/* TARJETA BLANCA */}
               <div className="bg-white rounded-[2rem] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.08)] border border-stone-100 flex flex-col h-full">
                 
-                {/* IMAGEN DE LA OBRA (Abarca la mayor parte) */}
-                <div className="relative aspect-[4/3] overflow-hidden">
+                {/* IMAGEN DE LA OBRA */}
+                <div className="relative aspect-[4/3] overflow-hidden bg-brand-stone pointer-events-none">
                   <img 
                     src={obra.img} 
                     alt={obra.titulo}
@@ -77,7 +140,7 @@ export const Obras = () => {
                 </div>
 
                 {/* INFO PIE DE TARJETA */}
-                <div className="p-8">
+                <div className="p-8 pointer-events-none">
                   <h3 className="text-2xl font-black uppercase italic tracking-tighter text-brand-dark mb-2 leading-none">
                     {obra.titulo}
                   </h3>
@@ -85,21 +148,35 @@ export const Obras = () => {
                     {obra.detalle}
                   </p>
                   
-                  {/* INDICADOR DE DESLIZE (Solo visual) */}
+                  {/* SISTEMA DE NAVEGACIÓN DINÁMICO */}
                   <div className="mt-6 flex items-center justify-between">
+                    
+                    {/* Dots Dinámicos */}
                     <div className="flex gap-1.5">
-                      <div className="w-8 h-1 bg-brand-orange rounded-full" />
-                      <div className="w-2 h-1 bg-stone-200 rounded-full" />
-                      <div className="w-2 h-1 bg-stone-200 rounded-full" />
+                      {obras.map((_, dotIndex) => (
+                        <div 
+                          key={dotIndex}
+                          className={`h-1 rounded-full transition-all duration-500 ${
+                            activeIndex === dotIndex 
+                              ? 'w-8 bg-brand-orange' // El dot activo se hace largo y naranja
+                              : 'w-2 bg-stone-200'    // Los otros quedan chiquitos y grises
+                          }`} 
+                        />
+                      ))}
                     </div>
-                    <span className="text-[9px] font-black uppercase tracking-[0.2em] text-stone-300">Deslizar</span>
+
+                    {/* Contador Dinámico */}
+                    <span className="text-[11px] font-black uppercase tracking-[0.2em] text-stone-300">
+                      {activeIndex + 1} / {obras.length}
+                    </span>
+
                   </div>
                 </div>
               </div>
             </motion.div>
           ))}
           
-          {/* ESPACIADOR FINAL para que el último elemento centre bien */}
+          {/* ESPACIADOR FINAL */}
           <div className="min-w-[5vw] md:min-w-[10vw]" />
         </div>
 

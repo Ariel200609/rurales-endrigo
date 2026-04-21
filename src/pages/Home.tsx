@@ -6,7 +6,7 @@ import { Nosotros } from './Nosotros';
 import { Servicios } from './Servicios';
 import { Contacto } from './Contacto';
 import { WspButton } from './WspButton';
-import { ScrollReveal } from './ScrollReveal'; // Importamos el revelador
+import { ScrollReveal } from './ScrollReveal'; 
 import { Obras } from './Obras';
 
 export const Home = () => {
@@ -15,7 +15,6 @@ export const Home = () => {
       <Navbar />
       <WspButton />
       
-      {/* El Hero no necesita revelado porque es lo primero que se ve */}
       <Hero />
 
       <ScrollReveal>
