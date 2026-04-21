@@ -38,7 +38,7 @@ export const Hero = () => {
         bottom-0 left-0 w-full rounded-t-[2.5rem] px-7 pt-5 pb-9
 
         /* DESKTOP: sin cambios */
-        md:top-0 md:bottom-auto md:h-full md:w-[480px] md:rounded-none md:rounded-r-[4rem] md:p-20 md:border-r
+        md:top-0 md:bottom-auto md:h-full md:w-[480px] md:rounded-none md:rounded-r-[4rem] md:px-20 md:pb-20 md:pt-32 md:border-r
         
         ${animate ? 'translate-y-0 md:translate-x-0 opacity-100' : 'translate-y-24 md:translate-y-0 md:-translate-x-full opacity-0'}`}
       >

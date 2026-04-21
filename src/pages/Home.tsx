@@ -6,6 +6,7 @@ import { Nosotros } from './Nosotros';
 import { Servicios } from './Servicios';
 import { Contacto } from './Contacto';
 import { WspButton } from './WspButton';
+import { Footer } from './Footer';
 import { ScrollReveal } from './ScrollReveal'; 
 import { Obras } from './Obras';
 
@@ -37,11 +38,7 @@ export const Home = () => {
         <Contacto />
       </ScrollReveal>
 
-      <footer className="py-10 bg-[#0a0a0a] text-center border-t border-white/5">
-        <p className="text-stone-600 text-[10px] uppercase tracking-[0.5em]">
-          Rurales Endrigo © 2026 — Bonifacio, Buenos Aires
-        </p>
-      </footer>
+      <Footer />
     </div>
   );
 };
