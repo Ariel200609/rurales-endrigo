@@ -69,8 +69,11 @@ export const Nosotros = () => {
             {/* Fondo de foto con superposición oscura */}
             <div className="absolute inset-0 z-0">
               <img 
-                src="/cartel.webp" // Reemplazar por la foto del taller si la tenés
-                alt="Taller Rurales Endrigo" 
+                src="/cartel.webp"
+                alt="Cartel de Rurales Endrigo — taller de carpintería rural en Bonifacio desde 1948"
+                loading="lazy"
+                width="800"
+                height="600"
                 className="w-full h-full object-cover opacity-30 grayscale"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/90 to-brand-dark/40" />

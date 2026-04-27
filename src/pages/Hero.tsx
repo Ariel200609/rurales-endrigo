@@ -24,7 +24,9 @@ export const Hero = () => {
         <img 
           src="/mangainicio.webp" 
           className="w-full h-full object-cover object-center" 
-          alt="Fondo Rurales Endrigo" 
+          alt="Manga ganadera fabricada por Rurales Endrigo — Carpintería rural en Bonifacio, Buenos Aires"
+          width="1920"
+          height="1080"
         />
       </motion.div>
       

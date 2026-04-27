@@ -109,8 +109,8 @@ export const Productos = () => {
   return (
     <section id="productos" className="relative z-10 py-24 bg-white overflow-hidden font-sans">
       <div className="max-w-7xl mx-auto px-6">
-        <h2 className="text-brand-orange font-bold uppercase text-xs tracking-[0.3em] mb-2">Catálogo</h2>
-        <h3 className="text-4xl font-black text-brand-dark mb-12 italic">Fabricación Propia</h3>
+        <span className="text-brand-orange font-bold uppercase text-xs tracking-[0.3em] mb-2 block">Catálogo</span>
+        <h2 className="text-4xl font-black text-brand-dark mb-12 italic">Fabricación Propia</h2>
         
         <div 
           ref={carouselRef}
@@ -131,7 +131,7 @@ export const Productos = () => {
               <div className="aspect-[4/5] overflow-hidden bg-brand-stone mb-6 relative pointer-events-none">
                 <ImageLoader 
                   src={p.img}
-                  alt={p.nombre}
+                  alt={`${p.nombre} — Rurales Endrigo, Bonifacio`}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
                 
@@ -139,7 +139,7 @@ export const Productos = () => {
                    <span className="bg-white text-brand-dark px-4 py-2 text-xs font-bold uppercase tracking-widest shadow-lg">Ver Galería</span>
                 </div>
               </div>
-              <h4 className="text-xl font-bold text-brand-dark uppercase italic tracking-tighter pointer-events-none">{p.nombre}</h4>
+              <h3 className="text-xl font-bold text-brand-dark uppercase italic tracking-tighter pointer-events-none">{p.nombre}</h3>
               <p className="text-stone-400 text-sm mt-1 group-hover:text-brand-orange transition-colors pointer-events-none">Click para ver más fotos</p>
             </div>
           ))}
@@ -188,7 +188,7 @@ export const Productos = () => {
 
               <div className="md:w-1/3 p-8 md:p-12 flex flex-col justify-center bg-white sticky top-0">
                 <span className="text-brand-orange font-bold text-xs uppercase tracking-widest mb-4">Detalle de Producto</span>
-                <h2 className="text-3xl font-black text-brand-dark mb-6 italic uppercase leading-none">{selectedProduct.nombre}</h2>
+                <p className="text-3xl font-black text-brand-dark mb-6 italic uppercase leading-none">{selectedProduct.nombre}</p>
                 <div className="w-10 h-1 bg-brand-orange mb-6" />
                 <p className="text-stone-600 leading-relaxed mb-8 font-light">
                   {selectedProduct.descripcion}

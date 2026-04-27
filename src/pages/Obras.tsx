@@ -128,8 +128,10 @@ export const Obras = () => {
                 <div className="relative aspect-[4/3] overflow-hidden bg-brand-stone pointer-events-none">
                   <img 
                     src={obra.img} 
-                    alt={obra.titulo}
+                    alt={`${obra.titulo} — ${obra.ubicacion} | Rurales Endrigo`}
                     loading="lazy"
+                    width="600"
+                    height="450"
                     className="w-full h-full object-cover" 
                   />
                   {/* TAG DE UBICACIÓN */}
