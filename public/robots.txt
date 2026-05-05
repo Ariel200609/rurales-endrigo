@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 
 # Le indicamos dónde está el mapa del sitio
-Sitemap: https://ruralesendrigo.com.ar/sitemap.xml
+Sitemap: https://ruralesendrigo.com/sitemap.xml
