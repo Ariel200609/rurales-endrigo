@@ -14,7 +14,7 @@ const obras = [
     id: 2,
     titulo: "Tranqueras Dobles",
     ubicacion: "Casey",
-    img: "/tranqueramadera.webp", // Le agregué la barra '/' para que busque bien la ruta
+    img: "/tranqueramadera.webp",
     detalle: "Madera dura seleccionada con acabado industrial."
   },
   {
@@ -29,7 +29,119 @@ const obras = [
     titulo: "Pedido de Postes",
     ubicacion: "Guaminí",
     img: "/poste2.webp",
-    detalle: "Postes tratados de alta durabilidad para perimetrales." // Le sumé un textito para que no quede vacío
+    detalle: "Postes tratados de alta durabilidad para perimetrales."
+  },
+  {
+    id: 5,
+    titulo: "Trabajo en Campo",
+    ubicacion: "Provincia de Buenos Aires",
+    img: "/obra-01.jpeg",
+    detalle: "Instalación y armado de estructuras rurales a medida."
+  },
+  {
+    id: 6,
+    titulo: "Obra Rural",
+    ubicacion: "Provincia de Buenos Aires",
+    img: "/obra-02.jpeg",
+    detalle: "Construcción robusta pensada para el trabajo diario en el campo."
+  },
+  {
+    id: 7,
+    titulo: "Instalación de Estructura",
+    ubicacion: "Provincia de Buenos Aires",
+    img: "/obra-03.jpeg",
+    detalle: "Materiales de primera calidad y mano de obra especializada."
+  },
+  {
+    id: 8,
+    titulo: "Proyecto de Campo",
+    ubicacion: "Provincia de Buenos Aires",
+    img: "/obra-04.jpeg",
+    detalle: "Soluciones a medida para establecimientos rurales."
+  },
+  {
+    id: 9,
+    titulo: "Obra Ganadera",
+    ubicacion: "Provincia de Buenos Aires",
+    img: "/obra-05.jpeg",
+    detalle: "Infraestructura diseñada para el manejo eficiente de hacienda."
+  },
+  {
+    id: 10,
+    titulo: "Trabajo Terminado",
+    ubicacion: "Provincia de Buenos Aires",
+    img: "/obra-06.jpeg",
+    detalle: "Acabado prolijo y resistente para años de uso en el campo."
+  },
+  {
+    id: 11,
+    titulo: "Estructura Rural",
+    ubicacion: "Provincia de Buenos Aires",
+    img: "/obra-07.jpeg",
+    detalle: "Construcciones rurales con tradición y experiencia."
+  },
+  {
+    id: 12,
+    titulo: "Instalación Finalizada",
+    ubicacion: "Provincia de Buenos Aires",
+    img: "/obra-08.jpeg",
+    detalle: "Entrega en tiempo y forma con garantía de trabajo."
+  },
+  {
+    id: 13,
+    titulo: "Obra en Progreso",
+    ubicacion: "Provincia de Buenos Aires",
+    img: "/obra-09.jpeg",
+    detalle: "Seguimiento continuo para asegurar la calidad en cada etapa."
+  },
+  {
+    id: 14,
+    titulo: "Resultado Final",
+    ubicacion: "Provincia de Buenos Aires",
+    img: "/obra-10.jpeg",
+    detalle: "Cada obra refleja el compromiso de Rurales Endrigo con el campo."
+  },
+  {
+    id: 15,
+    titulo: "Trabajo de Campo",
+    ubicacion: "Provincia de Buenos Aires",
+    img: "/obra-11.jpeg",
+    detalle: "Soluciones prácticas para el día a día del productor rural."
+  },
+  {
+    id: 16,
+    titulo: "Construcción Rural",
+    ubicacion: "Provincia de Buenos Aires",
+    img: "/obra-12.jpeg",
+    detalle: "Estructuras pensadas para resistir las exigencias del trabajo rural."
+  },
+  {
+    id: 17,
+    titulo: "Proyecto Terminado",
+    ubicacion: "Provincia de Buenos Aires",
+    img: "/obra-13.jpeg",
+    detalle: "Obras de calidad para establecimientos de toda la región."
+  },
+  {
+    id: 18,
+    titulo: "Obra de Campo",
+    ubicacion: "Provincia de Buenos Aires",
+    img: "/obra-14.jpeg",
+    detalle: "Instalaciones duraderas con materiales seleccionados."
+  },
+  {
+    id: 19,
+    titulo: "Trabajo Rural",
+    ubicacion: "Provincia de Buenos Aires",
+    img: "/obra-15.jpeg",
+    detalle: "Experiencia y dedicación en cada proyecto del campo."
+  },
+  {
+    id: 20,
+    titulo: "Finalización de Obra",
+    ubicacion: "Provincia de Buenos Aires",
+    img: "/obra-16.jpeg",
+    detalle: "El resultado habla por sí solo: calidad Rurales Endrigo."
   }
 ];
 
