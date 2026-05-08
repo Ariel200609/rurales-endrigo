@@ -142,6 +142,12 @@ const obras = [
     ubicacion: "Provincia de Buenos Aires",
     img: "/obra-16.jpeg",
     detalle: "El resultado habla por sí solo: calidad Rurales Endrigo."
+  },
+  {
+    id: 21,
+    titulo: "Fardos de alambres",
+    img: "/obra-17.webp",
+    detalle: "Fardos de alambres"
   }
 ];
 
